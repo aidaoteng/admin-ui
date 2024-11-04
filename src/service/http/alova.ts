@@ -13,6 +13,10 @@ import {
   DEFAULT_BACKEND_OPTIONS,
 } from './config'
 import { local } from '@/utils'
+import {encryptBase64, encryptWithAes, generateAesKey} from "@/utils/crypto";
+import {encrypt} from "@/utils/jsencrypt";
+const encryptHeader = 'encrypt-key';
+// pc端固定客户端授权id
 
 const { onAuthRequired, onResponseRefreshToken } = createServerTokenAuthentication<VueHookType>({
   // 服务端判定token过期
@@ -56,6 +60,25 @@ export function createAlovaInstance(
     timeout: _alovaConfig.timeout,
 
     beforeRequest: onAuthRequired((method) => {
+      console.log('beforeRequest method->', method)
+      // 是否需要加密
+      const isEncrypt = method.config.headers['isEncrypt'] === 'true';
+
+      console.log('import.meta.env.VITE_APP_ENCRYPT->', import.meta.env.VITE_APP_ENCRYPT)
+      if (import.meta.env.VITE_APP_ENCRYPT === 'true') {
+        console.log('isEncrypt',isEncrypt)
+        console.log('method.type->',method.type)
+        // 当开启参数加密
+        if (isEncrypt && (method.type === 'POST' || method.type === 'PUT')) {
+
+          // 生成一个 AES 密钥
+          const aesKey = generateAesKey();
+          console.log('generateAesKey->', aesKey)
+          method.config.headers[encryptHeader] = encrypt(encryptBase64(aesKey));
+          method.data = typeof method.data === 'object' ? encryptWithAes(JSON.stringify(method.data), aesKey) : encryptWithAes(method.data as string, aesKey);
+        }
+      }
+
       if (method.meta?.isFormPost) {
         method.config.headers['Content-Type'] = 'application/x-www-form-urlencoded'
         method.data = new URLSearchParams(method.data as URLSearchParams).toString()

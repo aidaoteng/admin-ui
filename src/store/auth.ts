@@ -8,6 +8,9 @@ interface AuthStatus {
   userInfo: Api.Login.Info | null
   token: string
 }
+
+const clientId = import.meta.env.VITE_APP_CLIENT_ID;
+
 export const useAuthStore = defineStore('auth-store', {
   state: (): AuthStatus => {
     return {
@@ -52,7 +55,20 @@ export const useAuthStore = defineStore('auth-store', {
     /* 用户登录 */
       async login(username: string, password: string, code: string, uuid: string) {
       try {
-        const { isSuccess, data } = await fetchLogin({ username, password, code, uuid })
+        const pms = {
+          tenantId: '000000',
+          username: username,
+          password: password,
+          rememberMe: false,
+          socialCode: '',
+          socialState: '',
+          source: '000000',
+          code: code,
+          uuid: uuid,
+          clientId: clientId,
+          grantType: 'password'
+        }
+        const { isSuccess, data } = await fetchLogin(pms)
         if (!isSuccess)
           return
           // 处理登录信息
@@ -63,7 +79,6 @@ export const useAuthStore = defineStore('auth-store', {
       }
     },
 
-    /* 处理登录返回的数据 */
     async handleLoginInfo(data: Api.Login.Info) {
       // 将token和userInfo保存下来
       local.set('userInfo', data)

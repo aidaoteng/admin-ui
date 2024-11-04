@@ -7,7 +7,7 @@ export function generateProxyPattern(envConfig: Record<string, string>) {
       key,
       {
         value,
-        proxy: `/proxy-${key}`,
+        proxy: `/api`,
       },
     ]
   })

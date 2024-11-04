@@ -35,6 +35,13 @@ interface ImportMetaEnv {
   readonly VITE_DEFAULT_LANG: App.lang
   /** 后端服务的环境类型 */
   readonly MODE: ServiceEnvType
+
+  readonly VITE_APP_ENCRYPT: string
+  readonly VITE_APP_RSA_PUBLIC_KEY: string
+  readonly VITE_APP_RSA_PRIVATE_KEY: string
+  readonly VITE_APP_CLIENT_ID: string
+  readonly VITE_APP_WEBSOCKET: string
+  readonly VITE_APP_SSE: string
 }
 
 interface ImportMeta {

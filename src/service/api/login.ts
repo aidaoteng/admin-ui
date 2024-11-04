@@ -1,16 +1,23 @@
 import { request } from '../http'
 
 interface Ilogin {
-    username: string
-    password: string
-    code: string
-    uuid: string
+  tenantId?: string;
+  username?: string;
+  password?: string;
+  rememberMe?: boolean;
+  socialCode?: string;
+  socialState?: string;
+  source?: string;
+  code?: string;
+  uuid?: string;
+  clientId: string;
+  grantType: string;
 }
 
 export function fetchLogin(data: Ilogin) {
-    const methodInstance = request.Post<Service.ResponseResult<Api.Login.Info>>('/auth/login', data)
+    const methodInstance = request.Post<Service.ResponseResult<Api.Login.Info>>('/auth/login', data,{headers:{isEncrypt: 'true'}})
     methodInstance.meta = {
-        authRole: null,
+      authRole: null
     }
     return methodInstance
 }
@@ -29,5 +36,5 @@ export function fetchUserRoutes(params: { id: number }) {
 
 
 export function fetchVerCode() {
-  return request.Get<Service.ResponseResult<Api.Login.VerCode> >('/code' )
+  return request.Get<Service.ResponseResult<Api.Login.VerCode> >('/auth/code' )
 }

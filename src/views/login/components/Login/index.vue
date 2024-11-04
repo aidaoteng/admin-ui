@@ -77,8 +77,8 @@ function checkUserAccount() {
 async function getVerCode() {
   const {data} = await fetchVerCode()
   if (data) {
-    imgVerCode.value = 'data:image/jpeg;base64,' + data.imgBase64
-    formValue.value.uuid = data.imgUuid
+    imgVerCode.value = 'data:image/jpeg;base64,' + data.img
+    formValue.value.uuid = data.uuid
   }
 }
 
