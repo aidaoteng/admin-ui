@@ -1,0 +1,71 @@
+{
+  "name": "nova-admin",
+  "type": "module",
+  "version": "0.9.8",
+  "private": true,
+  "description": "a clean and concise back-end management template based on Vue3, Vite5, Typescript, and Naive UI.",
+  "author": {
+    "name": "chansee97"
+  },
+  "license": "MIT",
+  "scripts": {
+    "dev": "vite --mode dev --port 9980",
+    "dev:test": "vite --mode test",
+    "dev:prod": "vite --mode prod",
+    "build": "vue-tsc --noEmit && vite build --mode prod",
+    "build:dev": "vue-tsc --noEmit && vite build --mode dev",
+    "build:test": "vue-tsc --noEmit && vite build --mode test",
+    "preview": "vite preview --port 9981",
+    "lint": "eslint . && vue-tsc --noEmit",
+    "lint:fix": "eslint . --fix",
+    "lint:check": "npx @eslint/config-inspector",
+    "sizecheck": "npx vite-bundle-visualizer"
+  },
+  "dependencies": {
+    "@vueuse/core": "^11.0.3",
+    "alova": "^3.0.16",
+    "colord": "^2.9.3",
+    "echarts": "^5.5.1",
+    "md-editor-v3": "^4.20.2",
+    "pinia": "^2.2.2",
+    "pinia-plugin-persistedstate": "^4.0.2",
+    "quill": "^2.0.2",
+    "radash": "^12.1.0",
+    "vue": "^3.5.8",
+    "vue-i18n": "^9.14.0",
+    "vue-router": "^4.4.5",
+    "vxe-table": "^4.7.79"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^3.2.0",
+    "@iconify-json/icon-park-outline": "^1.2.0",
+    "@iconify/vue": "^4.1.2",
+    "@types/node": "^22.5.5",
+    "@vitejs/plugin-vue": "^5.1.4",
+    "@vitejs/plugin-vue-jsx": "^4.0.1",
+    "eslint": "^9.11.0",
+    "lint-staged": "^15.2.10",
+    "naive-ui": "^2.39.0",
+    "sass": "^1.79.3",
+    "simple-git-hooks": "^2.11.1",
+    "typescript": "^5.6.2",
+    "unocss": "^0.62.4",
+    "unplugin-auto-import": "^0.18.3",
+    "unplugin-icons": "^0.19.3",
+    "unplugin-vue-components": "^0.27.4",
+    "vite": "^5.4.7",
+    "vite-bundle-visualizer": "^1.2.1",
+    "vite-plugin-compression": "^0.5.1",
+    "vite-plugin-vue-devtools": "7.4.5",
+    "vue-tsc": "^2.1.6"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "pnpm lint-staged"
+  },
+  "lint-staged": {
+    "*": "eslint --fix"
+  },
+  "volta": {
+    "node": "20.12.2"
+  }
+}

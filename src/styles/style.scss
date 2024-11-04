@@ -1,0 +1,40 @@
+
+.n-tabs-wrapper {
+  margin-top: 3px !important;
+  margin-bottom: 3px !important;
+}
+
+.n-tabs .n-tabs-nav.n-tabs-nav--top.n-tabs-nav--card-type .n-tabs-tab {
+  border-radius: 6px !important;
+  user-select:none;
+}
+
+.n-tabs .n-tabs-nav.n-tabs-nav--top.n-tabs-nav--card-type .n-tabs-tab-pad {
+  border-bottom: 1px !important;
+}
+
+.n-tabs .n-tabs-nav.n-tabs-nav--top.n-tabs-nav--card-type .n-tabs-tab.n-tabs-tab--active {
+  border: 1px solid var(--n-tab-text-color-active);
+  background: var(--n-tab-text-color-active) !important;
+  color: #FFFFFF;
+
+  .n-base-icon {
+    color: #FFFFFF;
+  }
+}
+
+.n-tabs .n-tabs-nav.n-tabs-nav--top.n-tabs-nav--card-type .n-tabs-pad {
+  border-bottom: 0 !important;
+}
+.n-tabs .n-tabs-nav.n-tabs-nav--card-type .n-tabs-scroll-padding {
+  border-bottom: 0 !important;
+}
+
+.n-tabs .n-tabs-tab {
+  padding: 0 16px !important;
+}
+
+.top_bg {
+  background-color: rgb(0, 20, 40);
+  color: #FFFFFF;
+}

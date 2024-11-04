@@ -1,0 +1,18 @@
+@import './reset.css';
+@import './transition.css';
+@import './naive.css';
+@import './style.scss';
+
+html,
+body,
+#app {
+  height: 100%;
+}
+.color-weak {
+  filter: invert(80%);
+}
+
+.gray-mode {
+  filter: grayscale(100%);
+}
+
