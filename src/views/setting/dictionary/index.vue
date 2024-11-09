@@ -22,7 +22,7 @@ const dictContentData = ref<Entity.Dict[]>([])
 
 async function getDictList() {
   startDictLoading()
-  const { data, isSuccess } = await fetchDictList()
+  const { data, isSuccess } = await fetchDictList(code)
   if (isSuccess) {
     dictData.value = data
   }

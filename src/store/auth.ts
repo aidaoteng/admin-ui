@@ -84,6 +84,7 @@ export const useAuthStore = defineStore('auth-store', {
       local.set('userInfo', data)
       local.set('accessToken', data.accessToken)
       local.set('refreshToken', data.refreshToken)
+      local.set('clientId', data.clientId)
       this.token = data.accessToken
       this.userInfo = data
 

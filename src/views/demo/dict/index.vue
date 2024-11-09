@@ -8,7 +8,7 @@ const subOptions = ref()
 const currentDict = ref()
 
 async function getAlldict() {
-  const { data, isSuccess } = await fetchDictList()
+  const { data, isSuccess } = await fetchDictList(code)
   if (isSuccess) {
     options.value = data.map((item) => {
       return {

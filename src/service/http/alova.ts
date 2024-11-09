@@ -41,6 +41,7 @@ const { onAuthRequired, onResponseRefreshToken } = createServerTokenAuthenticati
   // 添加token到请求头
   assignToken: (method) => {
     method.config.headers.Authorization = `Bearer ${local.get('accessToken')}`
+    method.config.headers.clientid = `${local.get('clientId')}`
   },
 })
 

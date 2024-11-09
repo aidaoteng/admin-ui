@@ -44,6 +44,8 @@ declare namespace Storage {
     loginAccount: any
     /* 存储当前语言 */
     lang: App.lang
+    /*客户端id*/
+    clientId: string
   }
 }
 

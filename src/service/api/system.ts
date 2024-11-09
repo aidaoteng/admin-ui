@@ -7,7 +7,7 @@ export function fetchAllRoutes() {
 
 
 // 获取所有字典列表
-export function fetchDictList() {
+export function fetchDictList(code: string) {
   return request.Get<Service.ResponseResult<Entity.Dict[]>>('/dict/list')
 }
 
