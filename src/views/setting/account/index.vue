@@ -129,7 +129,7 @@ function getList() {
   loading.value = true;
   fetchUserPage(queryParams.value).then((res: any) => {
     loading.value = false;
-    dataList.value = res.data.list as [];
+    dataList.value = res.data.records as [];
     total.value = res.data.total;
   })
 }
